@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
             this.clearLabel = new System.Windows.Forms.Label();
             this.goLabel = new System.Windows.Forms.Label();
@@ -36,6 +37,8 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.countLabel = new System.Windows.Forms.Label();
             this.hsLabel = new System.Windows.Forms.Label();
+            this.titleButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // titleLabel
@@ -126,11 +129,31 @@
             this.hsLabel.TabIndex = 7;
             this.hsLabel.Text = "HighScore 100";
             // 
+            // titleButton
+            // 
+            this.titleButton.BackColor = System.Drawing.Color.Maroon;
+            this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.titleButton.ForeColor = System.Drawing.Color.Aqua;
+            this.titleButton.Location = new System.Drawing.Point(277, 350);
+            this.titleButton.Name = "titleButton";
+            this.titleButton.Size = new System.Drawing.Size(234, 59);
+            this.titleButton.TabIndex = 8;
+            this.titleButton.Text = "スタート!!";
+            this.titleButton.UseVisualStyleBackColor = false;
+            this.titleButton.Visible = false;
+            this.titleButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.titleButton);
             this.Controls.Add(this.hsLabel);
             this.Controls.Add(this.countLabel);
             this.Controls.Add(this.timeLabel);
@@ -156,6 +179,8 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label countLabel;
         private System.Windows.Forms.Label hsLabel;
+        private System.Windows.Forms.Button titleButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
