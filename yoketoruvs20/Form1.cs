@@ -16,7 +16,7 @@ namespace yoketoruvs20
         const bool isDebug = true;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 10;
+        const int EnemyMax = 1000;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
