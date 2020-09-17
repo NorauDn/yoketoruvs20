@@ -16,8 +16,8 @@ namespace yoketoruvs20
         const bool isDebug = true;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 100;
-        const int ItemMax = 100;
+        const int EnemyMax = 10;
+        const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
         const int PlayerIndex = 0;
@@ -96,6 +96,19 @@ namespace yoketoruvs20
                     nextState = State.Clear;
                 }
             }
+
+            if(currentState==State.Game)
+            {
+                UpdateGame();
+            }
+        }
+
+        void UpdateGame()
+        {
+            Point mp = PointToClient(MousePosition);
+
+            chrs[0].Left = mp.X;
+            chrs[0].Top = mp.Y;
         }
 
         void initProc()

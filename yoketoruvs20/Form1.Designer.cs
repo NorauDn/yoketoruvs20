@@ -103,7 +103,7 @@
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("MV Boli", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(-1, 0);
+            this.timeLabel.Location = new System.Drawing.Point(0, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(171, 41);
             this.timeLabel.TabIndex = 5;
