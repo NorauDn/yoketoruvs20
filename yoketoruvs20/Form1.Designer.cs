@@ -81,7 +81,7 @@
             this.startButton.BackColor = System.Drawing.Color.Maroon;
             this.startButton.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.startButton.ForeColor = System.Drawing.Color.Aqua;
-            this.startButton.Location = new System.Drawing.Point(277, 350);
+            this.startButton.Location = new System.Drawing.Point(277, 337);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(234, 59);
             this.startButton.TabIndex = 3;
@@ -131,14 +131,14 @@
             // 
             // titleButton
             // 
-            this.titleButton.BackColor = System.Drawing.Color.Maroon;
+            this.titleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleButton.ForeColor = System.Drawing.Color.Aqua;
-            this.titleButton.Location = new System.Drawing.Point(277, 350);
+            this.titleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.titleButton.Location = new System.Drawing.Point(277, 337);
             this.titleButton.Name = "titleButton";
             this.titleButton.Size = new System.Drawing.Size(234, 59);
             this.titleButton.TabIndex = 8;
-            this.titleButton.Text = "スタート!!";
+            this.titleButton.Text = "タイトルへ";
             this.titleButton.UseVisualStyleBackColor = false;
             this.titleButton.Visible = false;
             this.titleButton.Click += new System.EventHandler(this.button1_Click_1);
@@ -153,7 +153,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.titleButton);
             this.Controls.Add(this.hsLabel);
             this.Controls.Add(this.countLabel);
             this.Controls.Add(this.timeLabel);
@@ -162,6 +161,7 @@
             this.Controls.Add(this.goLabel);
             this.Controls.Add(this.clearLabel);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.titleButton);
             this.Name = "Form1";
             this.Text = "Yoketoru";
             this.ResumeLayout(false);
