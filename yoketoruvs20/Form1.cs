@@ -26,7 +26,7 @@ namespace yoketoruvs20
 
         const string PlayerText = "('ω')";
         const string EnemyText = "敵";
-        const string ItemText = "＿人人人人人人人人＿\n＞　　　item　　　＜\n￣^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^￣";
+        const string ItemText = "＿人人人人人人人＿\n＞　   　item　 　　＜\n￣^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^￣";
 
         static Random rand = new Random();
 
@@ -133,6 +133,13 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyright.Visible = false;
                     hsLabel.Visible = false;
+
+                    for (int i = EnemyIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                    }
+
                     break;
 
                 case State.Gameover:
