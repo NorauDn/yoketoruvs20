@@ -16,13 +16,14 @@ namespace yoketoruvs20
         const bool isDebug = true;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 50;
+        const int EnemyMax = 5;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
+        const int itemCount = ItemMax;
 
         const string PlayerText = "('ω')";
         const string EnemyText = "敵";
@@ -137,17 +138,20 @@ namespace yoketoruvs20
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
-                if((mp.X>=chrs[i].Left)&&
-                   (mp.X<chrs[i].Right)&&
-                   (mp.Y>=chrs[i].Top)&&
-                   (mp.Y<chrs[i].Bottom))
+                if (((mp.X >= chrs[i].Left) &&
+                     (mp.X < chrs[i].Right) &&
+                     (mp.Y >= chrs[i].Top) &&
+                     (mp.Y < chrs[i].Bottom)))
                 {
-                    nextState = State.Gameover;
-                    MessageBox.Show("重なった！");
-                }
-                for(i=100;i<1;i--)
-                {
-                    timeLabel.Text = "Time" +i;
+                    if (i < ItemIndex)
+                    {
+                        nextState = State.Gameover;
+                    }
+
+                    else
+                    {
+                        chrs[i].Visible = false;
+                    }
                 }
             }
         }
@@ -178,6 +182,7 @@ namespace yoketoruvs20
 
                         for (int i = EnemyIndex; i < ChrMax; i++)
                         {
+                            chrs[i].Visible = true;
                             chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                             chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                             vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
