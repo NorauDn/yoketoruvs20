@@ -16,7 +16,7 @@ namespace yoketoruvs20
         const bool isDebug = true;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 1000;
+        const int EnemyMax = 100;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
@@ -41,6 +41,10 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
+        const int SpeedMax = 20;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vkey);
 
@@ -48,15 +52,15 @@ namespace yoketoruvs20
         {
             InitializeComponent();
 
-            for(int i=0;i<ChrMax;i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
-                if(i==PlayerIndex)
+                if (i == PlayerIndex)
                 {
                     chrs[i].Text = PlayerText;
                 }
-                else if(i<ItemIndex)
+                else if (i < ItemIndex)
                 {
                     chrs[i].Text = EnemyText;
                 }
@@ -85,7 +89,7 @@ namespace yoketoruvs20
                 initProc();
             }
 
-            if (isDebug) 
+            if (isDebug)
             {
                 if (GetAsyncKeyState((int)Keys.O) < 0)
                 {
@@ -97,7 +101,7 @@ namespace yoketoruvs20
                 }
             }
 
-            if(currentState==State.Game)
+            if (currentState == State.Game)
             {
                 UpdateGame();
             }
@@ -107,52 +111,78 @@ namespace yoketoruvs20
         {
             Point mp = PointToClient(MousePosition);
 
-            chrs[0].Left = mp.X;
-            chrs[0].Top = mp.Y;
+            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
+
+            for (int i = EnemyIndex; i < ChrMax; i++)
+            {
+                chrs[i].Left += vx[i];
+                chrs[i].Top += vy[i];
+
+                if (chrs[i].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]);
+                }
+                if (chrs[i].Right > ClientSize.Width)
+                {
+                    vx[i] = -Math.Abs(vx[i]);
+                }
+                if (chrs[i].Bottom > ClientSize.Height)
+                {
+                    vy[i] = -Math.Abs(vy[i]);
+                }
+            }
         }
 
-        void initProc()
-        {
-            currentState = nextState;
-            nextState = State.None;
 
-            switch(currentState)
+            void initProc()
             {
-                case State.Title:
-                    titleLabel.Visible = true;
-                    startButton.Visible = true;
-                    copyright.Visible = true;
-                    hsLabel.Visible = true;
-                    goLabel.Visible = false;
-                    titleButton.Visible = false;
-                    clearLabel.Visible = false;
-                    break;
+                currentState = nextState;
+                nextState = State.None;
 
-                case State.Game:
-                    titleLabel.Visible = false;
-                    startButton.Visible = false;
-                    copyright.Visible = false;
-                    hsLabel.Visible = false;
+                switch (currentState)
+                {
+                    case State.Title:
+                        titleLabel.Visible = true;
+                        startButton.Visible = true;
+                        copyright.Visible = true;
+                        hsLabel.Visible = true;
+                        goLabel.Visible = false;
+                        titleButton.Visible = false;
+                        clearLabel.Visible = false;
+                        break;
 
-                    for (int i = EnemyIndex; i < ChrMax; i++)
-                    {
-                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
-                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
-                    }
+                    case State.Game:
+                        titleLabel.Visible = false;
+                        startButton.Visible = false;
+                        copyright.Visible = false;
+                        hsLabel.Visible = false;
 
-                    break;
+                        for (int i = EnemyIndex; i < ChrMax; i++)
+                        {
+                            chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                            chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                            vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                            vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        }
 
-                case State.Gameover:
-                    goLabel.Visible = true;
-                    titleButton.Visible = true;
-                    break;
+                        break;
 
-                case State.Clear:
-                    clearLabel.Visible = true;
-                    titleButton.Visible = true;
-                    hsLabel.Visible = true;
-                    break;
+                    case State.Gameover:
+                        goLabel.Visible = true;
+                        titleButton.Visible = true;
+                        break;
+
+                    case State.Clear:
+                        clearLabel.Visible = true;
+                        titleButton.Visible = true;
+                        hsLabel.Visible = true;
+                        break;
+                }
             }
         }
     }
-}
