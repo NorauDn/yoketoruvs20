@@ -16,7 +16,7 @@ namespace yoketoruvs20
         const bool isDebug = true;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 100;
+        const int EnemyMax = 50;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
@@ -26,7 +26,7 @@ namespace yoketoruvs20
 
         const string PlayerText = "('ω')";
         const string EnemyText = "敵";
-        const string ItemText = "＿人人人人人人人＿\n＞　   　item　 　　＜\n￣^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^￣";
+        const string ItemText = "＿人人人人人人人＿\n＞　   　アイテム　 　　＜\n￣^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^Ｙ^￣";
 
         static Random rand = new Random();
 
@@ -41,7 +41,7 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
-        const int SpeedMax = 20;
+        const int SpeedMax = 10;
         int[] vx = new int[ChrMax];
         int[] vy = new int[ChrMax];
 
@@ -68,6 +68,8 @@ namespace yoketoruvs20
                 {
                     chrs[i].Text = ItemText;
                 }
+                chrs[i].Font = labelsource.Font;
+                chrs[i].ForeColor = labelsource.ForeColor;
                 Controls.Add(chrs[i]);
             }
         }
@@ -135,6 +137,18 @@ namespace yoketoruvs20
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
+                if((mp.X>=chrs[i].Left)&&
+                   (mp.X<chrs[i].Right)&&
+                   (mp.Y>=chrs[i].Top)&&
+                   (mp.Y<chrs[i].Bottom))
+                {
+                    nextState = State.Gameover;
+                    MessageBox.Show("重なった！");
+                }
+                for(i=100;i<1;i--)
+                {
+                    timeLabel.Text = "Time" +i;
+                }
             }
         }
 
@@ -184,5 +198,10 @@ namespace yoketoruvs20
                         break;
                 }
             }
+
+        private void timeLabel_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }

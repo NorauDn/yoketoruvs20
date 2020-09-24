@@ -39,6 +39,7 @@
             this.hsLabel = new System.Windows.Forms.Label();
             this.titleButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelsource = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -108,6 +109,7 @@
             this.timeLabel.Size = new System.Drawing.Size(171, 41);
             this.timeLabel.TabIndex = 5;
             this.timeLabel.Text = "Time 100";
+            this.timeLabel.Click += new System.EventHandler(this.timeLabel_Click);
             // 
             // countLabel
             // 
@@ -148,11 +150,24 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // labelsource
+            // 
+            this.labelsource.AutoSize = true;
+            this.labelsource.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelsource.ForeColor = System.Drawing.Color.Blue;
+            this.labelsource.Location = new System.Drawing.Point(83, 211);
+            this.labelsource.Name = "labelsource";
+            this.labelsource.Size = new System.Drawing.Size(22, 15);
+            this.labelsource.TabIndex = 9;
+            this.labelsource.Text = "★";
+            this.labelsource.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelsource);
             this.Controls.Add(this.hsLabel);
             this.Controls.Add(this.countLabel);
             this.Controls.Add(this.timeLabel);
@@ -181,6 +196,7 @@
         private System.Windows.Forms.Label hsLabel;
         private System.Windows.Forms.Button titleButton;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelsource;
     }
 }
 
