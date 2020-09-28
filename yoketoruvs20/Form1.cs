@@ -24,6 +24,7 @@ namespace yoketoruvs20
         const int EnemyIndex = PlayerIndex + PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
         const int itemCount = ItemMax;
+        int s;
 
         const string PlayerText = "('ω')";
         const string EnemyText = "敵";
@@ -151,6 +152,15 @@ namespace yoketoruvs20
                     else
                     {
                         chrs[i].Visible = false;
+                        if (s > 0)
+                        {
+                            s = s - 1;
+                            countLabel.Text = "★:" + s;
+                            if (s == 0)
+                            {
+                                nextState = State.Clear;
+                            }
+                        }
                     }
                 }
             }
@@ -172,7 +182,9 @@ namespace yoketoruvs20
                         goLabel.Visible = false;
                         titleButton.Visible = false;
                         clearLabel.Visible = false;
-                        break;
+                        countLabel.Text = "★:" + ItemMax;
+                        s = ItemMax;
+                    break;
 
                     case State.Game:
                         titleLabel.Visible = false;
