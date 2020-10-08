@@ -46,10 +46,10 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.titleLabel.Font = new System.Drawing.Font("Magneto", 50.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(218, 69);
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(246, 69);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(365, 81);
+            this.titleLabel.Size = new System.Drawing.Size(309, 76);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Yoketoru";
             // 
@@ -127,9 +127,9 @@
             this.hsLabel.Font = new System.Drawing.Font("MV Boli", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hsLabel.Location = new System.Drawing.Point(276, 205);
             this.hsLabel.Name = "hsLabel";
-            this.hsLabel.Size = new System.Drawing.Size(249, 41);
+            this.hsLabel.Size = new System.Drawing.Size(212, 41);
             this.hsLabel.TabIndex = 7;
-            this.hsLabel.Text = "HighScore 100";
+            this.hsLabel.Text = "HighScore 0";
             // 
             // titleButton
             // 
@@ -161,6 +161,7 @@
             this.labelsource.TabIndex = 9;
             this.labelsource.Text = "★";
             this.labelsource.Visible = false;
+            this.labelsource.Click += new System.EventHandler(this.labelsource_Click);
             // 
             // Form1
             // 

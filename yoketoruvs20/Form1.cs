@@ -24,7 +24,9 @@ namespace yoketoruvs20
         const int EnemyIndex = PlayerIndex + PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
         const int itemCount = ItemMax;
-        int s;
+        int Count;
+        int Playtime;
+        int hsScore;
 
         const string PlayerText = "('ω')";
         const string EnemyText = "敵";
@@ -152,11 +154,11 @@ namespace yoketoruvs20
                     else
                     {
                         chrs[i].Visible = false;
-                        if (s > 0)
+                        if (Count > 0) 
                         {
-                            s = s - 1;
-                            countLabel.Text = "★:" + s;
-                            if (s == 0)
+                            Count = Count - 1;
+                            countLabel.Text = "★:" + Count;
+                            if (Count == 0)
                             {
                                 nextState = State.Clear;
                             }
@@ -164,10 +166,16 @@ namespace yoketoruvs20
                     }
                 }
             }
+
+            timeLabel.Text = "time " + Playtime--;
+            if(Playtime<0)
+            {
+                nextState = State.Gameover;
+            }
         }
 
 
-            void initProc()
+        void initProc()
             {
                 currentState = nextState;
                 nextState = State.None;
@@ -183,7 +191,8 @@ namespace yoketoruvs20
                         titleButton.Visible = false;
                         clearLabel.Visible = false;
                         countLabel.Text = "★:" + ItemMax;
-                        s = ItemMax;
+                        Count = ItemMax;
+                        Playtime = 100;
                     break;
 
                     case State.Game:
@@ -212,11 +221,21 @@ namespace yoketoruvs20
                         clearLabel.Visible = true;
                         titleButton.Visible = true;
                         hsLabel.Visible = true;
+                        if(hsScore<Playtime)
+                        {
+                            hsScore = Playtime;
+                        }
+                        hsLabel.Text = "HighScore " + hsScore;
                         break;
                 }
             }
 
         private void timeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelsource_Click(object sender, EventArgs e)
         {
 
         }
