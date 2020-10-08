@@ -153,14 +153,17 @@ namespace yoketoruvs20
 
                     else
                     {
-                        chrs[i].Visible = false;
-                        if (Count > 0) 
+                        if (chrs[i].Visible = true)
                         {
-                            Count = Count - 1;
-                            countLabel.Text = "★:" + Count;
-                            if (Count == 0)
+                            chrs[i].Visible = false;
+                            if (Count > 0)
                             {
-                                nextState = State.Clear;
+                                Count = Count - 1;
+                                countLabel.Text = "★:" + Count;
+                                if (Count == 0)
+                                {
+                                    nextState = State.Clear;
+                                }
                             }
                         }
                     }
@@ -240,4 +243,4 @@ namespace yoketoruvs20
 
         }
     }
-    }
+}
